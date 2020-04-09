@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjaStoreTests", "NinjaStoreTests.csproj", "{85663798-68E3-4309-8F92-420903978474}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NinjaStoreTests", "NinjaStoreTests.csproj", "{85663798-68E3-4309-8F92-420903978474}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "..\Framework\Framework.csproj", "{5E1A4B5E-B3F1-49EE-A6D6-6BE5214B0944}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework", "..\Framework\Framework.csproj", "{5E1A4B5E-B3F1-49EE-A6D6-6BE5214B0944}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjaStorePages", "..\NinjaStorePages\NinjaStorePages.csproj", "{E6E6F51B-21F9-4D6F-BC21-53DA3BE0C25A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5E1A4B5E-B3F1-49EE-A6D6-6BE5214B0944}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E1A4B5E-B3F1-49EE-A6D6-6BE5214B0944}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E1A4B5E-B3F1-49EE-A6D6-6BE5214B0944}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6E6F51B-21F9-4D6F-BC21-53DA3BE0C25A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E6F51B-21F9-4D6F-BC21-53DA3BE0C25A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E6F51B-21F9-4D6F-BC21-53DA3BE0C25A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E6F51B-21F9-4D6F-BC21-53DA3BE0C25A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
