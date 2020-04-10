@@ -28,7 +28,15 @@ namespace NinjaStoreTests
         }
 
         [Test]
-        public void C004_Test_FeaturedSection
+        public void C004_Test_FeaturedSection()
+        {
+            //Arrange
+            //Find all items in Featured section
+            //Act
+            //Click on items in Featured section
+            //Asssert
+            //Verify the page that opens shows the details for corresponind product
+        }
 
         [OneTimeTearDown]
         public void Cleanup()
