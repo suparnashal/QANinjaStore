@@ -17,13 +17,17 @@ namespace NinjaStorePages
 
         public bool ValidateTopMenus(string mainMenu, string[] items)
         {
-            driver.ByXpath($"//a[.='{mainMenu}']").MouseOver();            
-            List<IWebElement> subMenus = driver.AllByXpath($"//a[.='{mainMenu}']/following-sibling::div/div/ul/li[*]").ToList();            
-            List<string> subMenuTexts = subMenus.Select(x => x.Text.Split(' ')[0]).ToList();
-            return(items.All(x => subMenuTexts.Any(y => (y == x))) &&
+            driver.ByXpath($"//a[.='{mainMenu}']").MouseOver();                      
+            List<string> subMenuTexts = GetAllSubMenus(mainMenu);
+            return (items.All(x => subMenuTexts.Any(y => (y == x))) &&
                    subMenuTexts.All(x => items.Any(y => (y == x)))
                    ? true:false) ;
         }
 
+        public List<string> GetAllSubMenus(string mainMenu)
+        {
+            List<IWebElement> subMenus = driver.AllByXpath($"//a[.='{mainMenu}']/following-sibling::div/div/ul/li[*]").ToList();         
+            return (subMenus.Select(x => x.Text.Split('(')[0].Trim()).ToList());
+        }
     }
 }
