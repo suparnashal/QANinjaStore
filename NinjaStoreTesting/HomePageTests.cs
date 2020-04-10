@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestPlatform.Common.Utilities;
 namespace NinjaStoreTests
 {
     [TestFixture]
-    public class Tests
+    public class HomePageTests
     {
         private IWebDriver driver;
         [OneTimeSetUp]
@@ -22,10 +22,13 @@ namespace NinjaStoreTests
         [TestCase("Desktops", new string[2] { "PC", "Mac" },Author ="Suparna",TestName ="C001_Verify_DesktopsMenu")]
         [TestCase("Laptops & Notebooks", new string[2] { "Macs", "Windows" },Author ="Suparna",TestName ="C002_Verify_LaptopsMenu")]
         [TestCase("Components", new string[5] { "Mice and Trackballs", "Monitors","Printers","Scanners","Web Cameras"},Author="Suparna",TestName ="C003_Verify_ComponentsMenu")]               
-        public void C001_Test_Menu_WithParameters(string mainMenu,string[] items)
+        public void Test_Menu_WithParameters(string mainMenu,string[] items)
         {
             Assert.That(new HomePage(driver).ValidateTopMenus(mainMenu,items), () => "Menus are incorrect");
         }
+
+        [Test]
+        public void C004_Test_FeaturedSection
 
         [OneTimeTearDown]
         public void Cleanup()
