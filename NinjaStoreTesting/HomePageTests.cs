@@ -28,14 +28,16 @@ namespace NinjaStoreTests
         }
 
         [Test]
-        public void C004_Test_FeaturedSection()
+        public void C004_Verify_Display_FeaturedSection()
         {
-            //Arrange
-            //Find all items in Featured section
-            //Act
-            //Click on items in Featured section
-            //Asssert
-            //Verify the page that opens shows the details for corresponind product
+           
+            Assert.That(new HomePage(driver).Validate_Items_Featured(),()=>"Featured items are not matching");
+        }
+
+        [Test]    
+        public void C005_Verify_DrillDown_OnFeaturedItems()
+        {           
+            Assert.That(new HomePage(driver).Validate_DrillDown_FeaturedItems);
         }
 
         [OneTimeTearDown]

@@ -4,11 +4,13 @@ using OpenQA.Selenium.Interactions;
 using System.Collections.Generic;
 using System.Linq;
 using Framework.Extensions;
+using System;
 
 namespace NinjaStorePages
 {
     public class HomePage
     {
+        List<IWebElement> featuredItems => driver.AllByXpath("//h3[.='Featured']/following::div[@class='row']//h4").ToList();
         private IWebDriver driver;
         public HomePage(IWebDriver Driver)
         {
@@ -28,6 +30,23 @@ namespace NinjaStorePages
         {
             List<IWebElement> subMenus = driver.AllByXpath($"//a[.='{mainMenu}']/following-sibling::div/div/ul/li[*]").ToList();         
             return (subMenus.Select(x => x.Text.Split('(')[0].Trim()).ToList());
+        }
+        
+
+        public bool Validate_Items_Featured()
+        {
+            string[] givenFeatured = {"MacBook","iPhone", "Apple Cinema 30\"", "Canon EOS 5D" };
+
+            //List<IWebElement> featuredItems = driver.AllByXpath("//h3[.='Featured']/following::div[@class='row']//h4").ToList();
+            return (featuredItems.All(x => givenFeatured.Contains(x.Text)) ? true:false) ;
+              
+        }
+
+        public bool Validate_DrillDown_FeaturedItems()
+        {
+            IWebElement MacBookElement = driver.ByXpath("//a[.='MacBook']");
+            MacBookElement.Click();            
+            return (driver.ByXpath("//button[.='Add to Cart']").Displayed);            
         }
     }
 }
