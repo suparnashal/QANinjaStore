@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.Tracing;
 using System.Text;
+using System.Threading;
 
 namespace Framework.Extensions
 {
@@ -27,7 +29,25 @@ namespace Framework.Extensions
         /// <returns></returns>
         public static IWebElement ByXpath(this IWebDriver webDriver, string locator)
         {
-            return (webDriver.FindElement(By.XPath(locator)));
+            int elapsed = 0, timeout = 1000,pollingInterval=200;
+            do
+            {
+                try
+                {
+                    IWebElement element = webDriver.FindElement(By.XPath(locator));
+                    if (element != null) 
+                        return element;
+
+                    elapsed += pollingInterval;
+                }
+                catch (NoSuchElementException)
+                {
+                    Thread.Sleep(200);
+                    continue;
+                }
+
+            } while (elapsed < timeout);
+            throw new InvalidSelectorException($"There is no visible element found by {locator}");            
         }
     }
 }

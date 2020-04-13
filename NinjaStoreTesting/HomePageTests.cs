@@ -34,10 +34,11 @@ namespace NinjaStoreTests
             Assert.That(new HomePage(driver).Validate_Items_Featured(),()=>"Featured items are not matching");
         }
 
-        [Test]    
+        
+        [Test]
         public void C005_Verify_DrillDown_OnFeaturedItems()
         {           
-            Assert.That(new HomePage(driver).Validate_DrillDown_FeaturedItems);
+            Assert.That(new HomePage(driver).Validate_DrillDown_FeaturedItems("MacBook"),()=>"DrillDowns are not opening page");
         }
 
         [OneTimeTearDown]

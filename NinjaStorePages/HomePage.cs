@@ -42,11 +42,29 @@ namespace NinjaStorePages
               
         }
 
-        public bool Validate_DrillDown_FeaturedItems()
+        public bool Validate_DrillDown_FeaturedItems(string itemName)
         {
-            IWebElement MacBookElement = driver.ByXpath("//a[.='MacBook']");
+            IWebElement MacBookElement = driver.ByXpath($"//a[.='{itemName}']");
             MacBookElement.Click();            
             return (driver.ByXpath("//button[.='Add to Cart']").Displayed);            
+        }
+
+        public void OpenItem(string mainMenu,string subMenu)
+        {
+
+
+            //a[starts-with(text(),"Mac")]
+
+            //a[.="Desktops"]/following-sibling::div/div/ul/li/a[starts-with(text(),"Mac")]
+
+            //a[.="Desktops"]/following-sibling::div//a[starts-with(text(),"Mac")]
+
+            //a[.="Desktops"]/following-sibling::div//a[starts-with(text(),"Mac")] .. works ok
+
+            driver.ByXpath($"//a[.='{mainMenu}']").MouseOver();
+            IWebElement subMenuMac = driver.ByXpath($"//a[.='Desktops']/following-sibling::div//a[starts-with(text(),'{subMenu}')]");
+            subMenuMac.Click();
+
         }
     }
 }
