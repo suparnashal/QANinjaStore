@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestPlatform.Common.Utilities;
 
 namespace NinjaStoreTests
 {
-    [TestFixture]
+    [TestFixture, Parallelizable]
     public class HomePageTests
     {
         private IWebDriver driver;

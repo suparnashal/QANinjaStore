@@ -8,6 +8,7 @@ using NinjaStorePages;
 
 namespace NinjaStoreTests
 {
+    [TestFixture,Parallelizable]
   public class ItemDetailsTests
     {
         private IWebDriver driver;
