@@ -8,13 +8,13 @@ using System;
 
 namespace NinjaStorePages
 {
-    public class HomePage
+    public class HomePage : BasePage
     {
         List<IWebElement> featuredItems => driver.AllByXpath("//h3[.='Featured']/following::div[@class='row']//h4").ToList();
-        private IWebDriver driver;
-        public HomePage(IWebDriver Driver)
+        
+        public HomePage(IWebDriver Driver):base(Driver)
         {
-            driver = Driver;
+            
         }
 
         public bool ValidateTopMenus(string mainMenu, string[] items)

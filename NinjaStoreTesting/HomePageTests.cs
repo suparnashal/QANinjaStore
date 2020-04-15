@@ -8,15 +8,12 @@ using Microsoft.VisualStudio.TestPlatform.Common.Utilities;
 namespace NinjaStoreTests
 {
     [TestFixture, Parallelizable]
-    public class HomePageTests
-    {
-        private IWebDriver driver;
+    public class HomePageTests : BaseTest
+    {        
         [OneTimeSetUp]
         public void Setup()
         {
-            driver = BrowserFactory.GetBrowser();
-            driver.Navigate().GoToUrl("http://tutorialsninja.com/demo/index.php?route=common/home");
-            driver.Manage().Window.Maximize();
+            driver = BrowserFactory.GetBrowser();           
         }
 
         [TestCase("Desktops", new string[2] { "PC", "Mac" },Author ="Suparna",TestName ="C001_Verify_DesktopsMenu")]

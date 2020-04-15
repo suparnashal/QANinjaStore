@@ -5,20 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using NinjaStorePages;
+using Framework.Logging;
 
 namespace NinjaStoreTests
 {
     [TestFixture,Parallelizable]
-  public class ItemDetailsTests
-    {
-        private IWebDriver driver;
+  public class ItemDetailsTests : BaseTest
+    {   
 
         [OneTimeSetUp]
         public void Setup()
         {
-            driver = BrowserFactory.GetBrowser();
-            driver.Navigate().GoToUrl("http://tutorialsninja.com/demo/index.php?route=common/home");
-            driver.Manage().Window.Maximize();
+            driver = BrowserFactory.GetBrowser();           
         }
 
         [Test]
@@ -26,11 +24,12 @@ namespace NinjaStoreTests
         {
             new HomePage(driver).OpenItem("Desktops","Mac");
             Assert.That(new ItemDetailsPage(driver).Validate_AddToCart(1,122),()=>"Add To Cart has failed");
-        }
+        }       
 
         [OneTimeTearDown]
         public void Cleanup()
         {
+           
             driver.Quit();
         }
     }

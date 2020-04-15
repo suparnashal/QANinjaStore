@@ -15,6 +15,7 @@ namespace Framework.Configurations
             options.AddArgument("start-maximized");
             IWebDriver driver = new ChromeDriver(service, options, TimeSpan.FromMinutes(5));
             driver.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl("http://tutorialsninja.com/demo/index.php?route=common/home");            
             return driver;
         }
     }
