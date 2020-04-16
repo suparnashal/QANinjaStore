@@ -49,5 +49,17 @@ namespace Framework.Extensions
             } while (elapsed < timeout);
             throw new InvalidSelectorException($"There is no visible element found by {locator}");            
         }
+
+        /// <summary>
+        /// Take screenshot
+        /// </summary>
+        /// <param name="driver"></param>
+        /// <param name="saveLocation"></param>
+        public static void TakeScreenshot(this IWebDriver webDriver, string saveLocation)
+        {
+            ITakesScreenshot screenshotDriver = webDriver as ITakesScreenshot;
+            Screenshot screenshot = screenshotDriver.GetScreenshot();
+            screenshot.SaveAsFile(saveLocation,ScreenshotImageFormat.Png);
+        }
     }
 }

@@ -1,5 +1,8 @@
-﻿using Framework.Logging;
+﻿using Framework.Extensions;
+using Framework.Logging;
+using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,8 +23,15 @@ namespace NinjaStorePages
             if (!result)
             {
                 TestContextData.AddFail(message);
-                //TakeScreenshot() ;//TODO
+                TakeScreenshot() ;
             }
+        }
+
+        private void TakeScreenshot()
+        {
+            string path =$@"C:\suparna\GitHubProjects\QANinjaStore\Logs\{TestContext.CurrentContext.Test.Name}_{DateTime.Now.ToString("dd_-MM-yyyy")}.Png";
+            driver.TakeScreenshot(path);
+            TestContext.AddTestAttachment(path);
         }
     }
 }
