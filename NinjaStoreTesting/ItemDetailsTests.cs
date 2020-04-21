@@ -20,7 +20,7 @@ namespace NinjaStoreTests
         }
 
         [TestCase(1,122,Author ="Suparna",TestName = "C007_Verify_AddToCart")]
-        [TestCase(2,123, Author = "Suparna", TestName = "C008_Verify_AddToCart")]
+        [TestCase(2,123, Author = "Suparna", TestName = "C008_Verify_AddToCart_ExpectFail")]
         public void C006_Verify_AddToCart(int numOfItems, int cartPrice)
         {
             new HomePage(driver).OpenItem("Desktops","Mac");

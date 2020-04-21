@@ -7,7 +7,7 @@ using System.Text;
 
 namespace NinjaStoreTests
 {
-  public class BaseTest
+  public abstract class BaseTest
     {
         protected IWebDriver driver;
 

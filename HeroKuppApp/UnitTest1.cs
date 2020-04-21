@@ -27,7 +27,7 @@ namespace HeroKuppApp
         }
 
         [Test]
-        public void Test_Basic_Auth_Way2()
+        public void Test_ForBroken_Images()
         {
           
         }

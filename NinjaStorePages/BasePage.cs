@@ -9,7 +9,7 @@ using System.Text;
 
 namespace NinjaStorePages
 {
-    public class BasePage
+    public abstract class BasePage
     {
         protected IWebDriver driver; 
 
