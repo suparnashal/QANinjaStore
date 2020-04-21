@@ -13,7 +13,7 @@ namespace NinjaStoreTests
         [OneTimeSetUp]
         public void Setup()
         {
-            driver = BrowserFactory.GetBrowser();           
+            driver = BrowserFactory.GetBrowser("http://tutorialsninja.com/demo/index.php?route=common/home");           
         }
 
         [TestCase("Desktops", new string[2] { "PC", "Mac" },Author ="Suparna",TestName ="C001_Verify_DesktopsMenu")]

@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NinjaStoreTests", "NinjaSto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework", "..\Framework\Framework.csproj", "{5E1A4B5E-B3F1-49EE-A6D6-6BE5214B0944}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjaStorePages", "..\NinjaStorePages\NinjaStorePages.csproj", "{E6E6F51B-21F9-4D6F-BC21-53DA3BE0C25A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NinjaStorePages", "..\NinjaStorePages\NinjaStorePages.csproj", "{E6E6F51B-21F9-4D6F-BC21-53DA3BE0C25A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeroKuppApp", "..\HeroKuppApp\HeroKuppApp.csproj", "{CEB1C900-F24C-4C34-A1DF-991A4421BA1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E6E6F51B-21F9-4D6F-BC21-53DA3BE0C25A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6E6F51B-21F9-4D6F-BC21-53DA3BE0C25A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6E6F51B-21F9-4D6F-BC21-53DA3BE0C25A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEB1C900-F24C-4C34-A1DF-991A4421BA1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEB1C900-F24C-4C34-A1DF-991A4421BA1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEB1C900-F24C-4C34-A1DF-991A4421BA1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEB1C900-F24C-4C34-A1DF-991A4421BA1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

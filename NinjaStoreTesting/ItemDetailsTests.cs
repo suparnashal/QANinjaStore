@@ -16,7 +16,7 @@ namespace NinjaStoreTests
         [OneTimeSetUp]
         public void Setup()
         {
-            driver = BrowserFactory.GetBrowser();           
+            driver = BrowserFactory.GetBrowser("http://tutorialsninja.com/demo/index.php?route=common/home");           
         }
 
         [TestCase(1,122,Author ="Suparna",TestName = "C007_Verify_AddToCart")]
