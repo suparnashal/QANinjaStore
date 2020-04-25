@@ -2,6 +2,8 @@ using Framework.Configurations;
 using Framework.Extensions;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace HeroKuppApp
@@ -27,10 +29,14 @@ namespace HeroKuppApp
         }
 
         [Test]
-        public void Test_ForBroken_Images()
+        public void Test_ForBroken_Images_WillFail()
         {
-          
+            driver.ByXpath("//a[contains(text(),'Broken Images')]").Click();
+            List<IWebElement> imgElements=driver.AllByXpath("//img").ToList<IWebElement>();
+            bool anyImgsBroken= imgElements.Any(x => x.GetAttribute("naturalWidth").Equals("0"));
+            Assert.False(anyImgsBroken);
         }
+
         [TearDown]
         public void Teardown()
         {
