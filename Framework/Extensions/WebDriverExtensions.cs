@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -48,6 +49,36 @@ namespace Framework.Extensions
 
             } while (elapsed < timeout);
             throw new InvalidSelectorException($"There is no visible element found by {locator}");            
+        }
+
+        public static IWebElement NthElementByXPath(this IWebDriver webDriver,string locator,int index)
+        {
+            int elapsed = 0, timeout = 1000, pollingInterval = 200;
+            do
+            {
+                try
+                {
+                 ReadOnlyCollection<IWebElement> element = webDriver.FindElements(By.XPath(locator));
+                    if (element != null)
+                        return element[index];
+
+                    elapsed += pollingInterval;
+                }
+                catch (NoSuchElementException)
+                {
+                    Thread.Sleep(200);
+                    continue;
+                }
+
+            } while (elapsed < timeout);
+            throw new InvalidSelectorException($"There is no visible element found by {locator}");
+        }
+        public static void ScrollDown(this IWebDriver webDriver,IWebElement element)
+        {
+            Actions action = new Actions(webDriver);
+            action.MoveToElement(element).Click();
+            action.SendKeys(Keys.PageDown).Perform();
+            Thread.Sleep(1000);
         }
 
         /// <summary>
