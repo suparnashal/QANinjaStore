@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
+using ZooplaApp.Pages;
 
 
 namespace ZooplaApp
@@ -22,18 +23,15 @@ namespace ZooplaApp
 
         [Test]
         public void SeleniumChallenge_Test1()
-        {                    
-            driver.NthElementByXPath("//button[.='Accept all cookies']", 1).Click();
-            driver.ByXpath("//input[contains(@id,'search-input-location')]").SendKeys("London\n");                        
-            
-            driver.ScrollDown(driver.NthElementByXPath("//ul[contains(@class,'listing-results')]/li[@data-listing-id]//a[contains(@class,'text-price')]", 3));
-            string agentName = driver.ByXpath("//div[contains(@class,'ui-agent__text')]/h4").Text;
-            driver.ByXpath("//a[@class='ui-agent__details']").Click();
-            
-            driver.ScrollDown(driver.NthElementByXPath("//ul[contains(@class,'listing-results')]/li[@data-listing-id]//a[contains(@class,'listing-results-price')]", 1));            
-            string verifyAgentName = driver.ByXpath("//div[contains(@class,'ui-agent__text')]/h4").Text;
-
-            Assert.That(agentName==verifyAgentName);
+        {                
+            HomePage homepage = new HomePage(driver);
+            homepage.SearchProperties("London");
+            PropertyListingPage propListing = new PropertyListingPage(driver);
+            propListing.OpenProperty(1);
+            string agentName = new PropertyDetailsPage(driver).GetAgentForProperty();            
+            new AgentPage(driver).OpenAgentProperty();     
+            string verifyAgentName = new PropertyDetailsPage(driver).GetAgentForProperty(); 
+            Assert.That(agentName==verifyAgentName);  
         }
 
         [TearDown]

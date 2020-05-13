@@ -37,48 +37,65 @@ namespace Framework.Extensions
                 {
                     IWebElement element = webDriver.FindElement(By.XPath(locator));
                     if (element != null) 
-                        return element;
-
-                    elapsed += pollingInterval;
+                        return element;                  
                 }
                 catch (NoSuchElementException)
                 {
                     Thread.Sleep(200);
                     continue;
+                }
+                finally
+                {
+                    elapsed += pollingInterval;
                 }
 
             } while (elapsed < timeout);
             throw new InvalidSelectorException($"There is no visible element found by {locator}");            
         }
-
+        /// <summary>
+        /// Finds the Nth web element in a locator that returns a list of web elements
+        /// </summary>
+        /// <param name="webDriver"></param>
+        /// <param name="locator"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public static IWebElement NthElementByXPath(this IWebDriver webDriver,string locator,int index)
         {
-            int elapsed = 0, timeout = 1000, pollingInterval = 200;
+            int elapsed = 0, timeout = 2000, pollingInterval = 200;
             do
             {
                 try
                 {
                  ReadOnlyCollection<IWebElement> element = webDriver.FindElements(By.XPath(locator));
-                    if (element != null)
+                    if (element.Count > index || element != null)
                         return element[index];
-
-                    elapsed += pollingInterval;
+                    else
+                        throw new NoSuchElementException();                   
                 }
                 catch (NoSuchElementException)
                 {
                     Thread.Sleep(200);
                     continue;
                 }
-
+                finally
+                {
+                    elapsed += pollingInterval;
+                }
             } while (elapsed < timeout);
+
             throw new InvalidSelectorException($"There is no visible element found by {locator}");
         }
+
+        /// <summary>
+        /// Scrolls down to the element and clicks it
+        /// </summary>
+        /// <param name="webDriver"></param>
+        /// <param name="element"></param>
         public static void ScrollDown(this IWebDriver webDriver,IWebElement element)
         {
             Actions action = new Actions(webDriver);
             action.MoveToElement(element).Click();
-            action.SendKeys(Keys.PageDown).Perform();
-            Thread.Sleep(1000);
+            action.SendKeys(Keys.PageDown).Perform();            
         }
 
         /// <summary>
