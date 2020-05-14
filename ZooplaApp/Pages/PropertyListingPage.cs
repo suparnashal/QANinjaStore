@@ -16,7 +16,9 @@ namespace ZooplaApp.Pages
 
         public void OpenProperty(int index)
         {
-            driver.ScrollDown(driver.NthElementByXPath("//ul[contains(@class,'listing-results')]/li[@data-listing-id]//a[contains(@class,'text-price')]", index));
+            driver.waitForPageToLoad("(//div[contains(@class,'listing-results-wrapper')]//img)[3]");
+            driver.waitForPageToLoad($"(//ul[contains(@class,'listing-results')]/li[@data-listing-id]//a[contains(@class,'text-price')])[{index}]");            
+            driver.ScrollDown(driver.ByXpath($"(//ul[contains(@class,'listing-results')]/li[@data-listing-id]//a[contains(@class,'text-price')])[{index}]"));
         }
 
     }

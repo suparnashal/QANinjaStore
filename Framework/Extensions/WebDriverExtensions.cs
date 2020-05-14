@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -51,39 +52,17 @@ namespace Framework.Extensions
 
             } while (elapsed < timeout);
             throw new InvalidSelectorException($"There is no visible element found by {locator}");            
-        }
+        }        
+
         /// <summary>
-        /// Finds the Nth web element in a locator that returns a list of web elements
+        /// Waits for element indicated by the locator to be displayes
         /// </summary>
         /// <param name="webDriver"></param>
         /// <param name="locator"></param>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        public static IWebElement NthElementByXPath(this IWebDriver webDriver,string locator,int index)
-        {
-            int elapsed = 0, timeout = 2000, pollingInterval = 200;
-            do
-            {
-                try
-                {
-                 ReadOnlyCollection<IWebElement> element = webDriver.FindElements(By.XPath(locator));
-                    if (element.Count > index || element != null)
-                        return element[index];
-                    else
-                        throw new NoSuchElementException();                   
-                }
-                catch (NoSuchElementException)
-                {
-                    Thread.Sleep(200);
-                    continue;
-                }
-                finally
-                {
-                    elapsed += pollingInterval;
-                }
-            } while (elapsed < timeout);
-
-            throw new InvalidSelectorException($"There is no visible element found by {locator}");
+        public static void waitForPageToLoad(this IWebDriver webDriver,string locator)
+        {            
+            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromMilliseconds(2000));
+            wait.Until(drv=>drv.FindElement(By.XPath(locator)).Displayed) ;
         }
 
         /// <summary>
@@ -93,10 +72,10 @@ namespace Framework.Extensions
         /// <param name="element"></param>
         public static void ScrollDown(this IWebDriver webDriver,IWebElement element)
         {
-            Actions action = new Actions(webDriver);
+            Actions action = new Actions(webDriver);            
             action.MoveToElement(element).Click();
             action.SendKeys(Keys.PageDown).Perform();            
-        }
+        }       
 
         /// <summary>
         /// Take screenshot

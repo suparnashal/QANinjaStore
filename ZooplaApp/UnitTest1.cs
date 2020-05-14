@@ -25,9 +25,9 @@ namespace ZooplaApp
         public void SeleniumChallenge_Test1()
         {                
             HomePage homepage = new HomePage(driver);
-            homepage.SearchProperties("London");
+            homepage.SearchProperties("London"); //tried other values like Bristol, Oxfordshire
             PropertyListingPage propListing = new PropertyListingPage(driver);
-            propListing.OpenProperty(1);
+            propListing.OpenProperty(3);
             string agentName = new PropertyDetailsPage(driver).GetAgentForProperty();            
             new AgentPage(driver).OpenAgentProperty();     
             string verifyAgentName = new PropertyDetailsPage(driver).GetAgentForProperty(); 
