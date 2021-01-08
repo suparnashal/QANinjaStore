@@ -4,6 +4,7 @@ using Framework.Configurations;
 using OpenQA.Selenium.Interactions;
 using NinjaStorePages;
 using Microsoft.VisualStudio.TestPlatform.Common.Utilities;
+using OpenQA.Selenium.Chrome;
 
 namespace NinjaStoreTests
 {
@@ -12,7 +13,7 @@ namespace NinjaStoreTests
     {        
         [OneTimeSetUp]
         public void Setup()
-        {
+        {           
             driver = BrowserFactory.GetBrowser("http://tutorialsninja.com/demo/index.php?route=common/home");           
         }
 
@@ -24,7 +25,7 @@ namespace NinjaStoreTests
             Assert.That(new HomePage(driver).ValidateTopMenus(mainMenu,items), () => "Menus are incorrect");
         }
 
-        [Test]
+        [Test]        
         public void C004_Verify_Display_FeaturedSection()
         {
            

@@ -12,7 +12,8 @@ namespace Framework.Configurations
         {
             ChromeDriverService service = ChromeDriverService.CreateDefaultService();
             ChromeOptions options = new ChromeOptions();
-            options.AddArgument("start-maximized");
+            options.AddArgument("start-maximized");            
+            //options.AddArgument("--headless"); enable this option to run chrome in headless mode
             IWebDriver driver = new ChromeDriver(service, options, TimeSpan.FromMinutes(5));
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(url);            
