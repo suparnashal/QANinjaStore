@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 
 namespace Framework.Configurations
 {
    public abstract class BrowserFactory
     {
-        public static IWebDriver GetBrowser(string url)
+        public static IWebDriver GetChromeBrowser(string url)
         {
             ChromeDriverService service = ChromeDriverService.CreateDefaultService();
             ChromeOptions options = new ChromeOptions();
@@ -19,5 +20,6 @@ namespace Framework.Configurations
             driver.Navigate().GoToUrl(url);            
             return driver;
         }
+      
     }
 }

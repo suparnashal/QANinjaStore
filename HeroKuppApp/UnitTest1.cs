@@ -14,7 +14,7 @@ namespace HeroKuppApp
         [SetUp]
         public void Setup()
         {
-            driver = BrowserFactory.GetBrowser("http://the-internet.herokuapp.com/");
+            driver = BrowserFactory.GetChromeBrowser("http://the-internet.herokuapp.com/");
         }
 
         [Test]

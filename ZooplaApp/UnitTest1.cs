@@ -18,7 +18,7 @@ namespace ZooplaApp
         [SetUp]
         public void Setup()
         {
-            driver = BrowserFactory.GetBrowser("https://www.zoopla.co.uk/");
+            driver = BrowserFactory.GetChromeBrowser("https://www.zoopla.co.uk/");
         }
 
         [Test]
